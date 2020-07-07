@@ -34,15 +34,15 @@ from datetime import datetime
 today = datetime.today()
 
 def myCal(mm=today.month, yy=today.year):
-  myMonth=10
-  myYear = 2020
-  myMonth = int(input('enter a 2 digit month. for example: 11'))
-  myYear = int(input('enter a 4 digit year. for example: 2020'))
-  if myMonth is None or myYear is None:
-    return (calendar.month(yy, mm))
-  else:
-    return (calendar.month(yy, myMonth))
-  return (calendar.month(yy, mm))
+  try:
+    myMonth = int(input('enter a 2 digit month. for example: 11'))
+    if myMonth == "":
+      myMonth = mm
+    myYear = int(input('enter a 4 digit year. for example: 2020'))
+    if myYear == "":
+      myYear = yy
+  except ValueError:
+    return (calendar.month(today.year, today.month))
 
 # myCal(3, 1967)
 # myCal()
